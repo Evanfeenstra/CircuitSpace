@@ -1,0 +1,176 @@
+<head>
+  <title>CircuitSpace</title>
+    <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+    <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type='text/javascript' src='/js/prefixfree.js'></script>
+    <script type='text/javascript' src='/js/phaser.js'></script>
+</head>
+
+<body>
+</body>
+
+<template name="layout">
+	<div class="container">
+		<header>
+		{{> nav}}
+		</header>
+	<!--YIELD renders the template in the defined path-->
+	<!--here it will render "main" as main is defined as "/" in Router.route-->
+	{{> yield}}
+	</div>
+</template>
+
+<template name='nav'>
+<div id="login">
+  {{> loginButtons}}
+  </div>
+
+  <paper-tabs id="tabs" selected="0">
+  	<paper-tab class="tab" id="nav0">Home</paper-tab>
+  	<paper-tab class="tab" id="nav1">Members</paper-tab>
+  	<paper-tab class="tab" id="nav2">Learn</paper-tab>
+  </paper-tabs>
+  
+  <div class="clearfix">&nbsp;</div>
+</template>
+
+
+
+<template name="main">
+{{> home}}
+</template>
+
+
+
+<template name="settings">
+<div class="padder">
+<h1>Settings:</h1>
+	<form>
+		<label for="icon"><strong>Icon:</strong></label>
+		<input type="text" id="icon" name="icon" maxlength="20" value='{{data.icon}}'>
+		<input type="submit">
+	<br>
+	To display in front of your name on the "members" page. Icons can be found here: <a target="blank" href="http://fortawesome.github.io/Font-Awesome/icons/">Font Awesome Icons</a><br><br>
+		<label for="iconcolor"><strong>Icon color:</strong></label>
+		<input type="text" id="iconcolor" name="iconcolor" maxlength="20" value='{{data.iconcolor}}'>
+		<input type="submit">
+	<br>
+	The color of your icon. Can be any color name compatible with HTML, a hex color: #FFFFF, or in RGB format: rgb(255,255,255)<br><br>
+		<label for="message"><strong>Message:</strong></label>
+		<input type="text" id="message" name="message" maxlength="100" value='{{data.message}}'>
+		<input type="submit">
+	<br>
+	The message to display next to your name on the "members" page.<br><br>
+		<label for="theme"><strong>Code Theme:</strong></label>
+		<input type="text" id="theme" name="theme" maxlength="20" value='{{data.theme}}'>
+		<input type="submit">
+	<br>
+	The color theme of your code editor. A demo of the options can be found here: <a target="blank" href="https://codemirror.net/demo/theme.html">Code Mirror Theme Demo</a>
+	</form>
+</div>
+</template>
+
+
+
+<template name="members">
+<div horizontal layout around-justified>
+	<div flex id="ulholder">
+		{{#each users}}
+        	<ul>
+        		<a href="/{{owner}}">{{> user}}</a>
+        	</ul>
+      	{{/each}}
+		
+	</div>
+</div>
+</template>
+
+
+<template name="user">
+	<li horizontal layout center>
+	&nbsp;<i id="member-icon" style="color:{{iconcolor}};" class="fa fa-{{icon}} fa-3x"></i>&nbsp;&nbsp;&nbsp;
+	<span style='font-size:20px;margin-left:58px;'>{{owner}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span style="font-style:italic">{{message}}</span>
+	</li>
+</template>
+
+
+<template name="home">
+	<div class="wbpg" style="z-index:1;">
+		<section style="background-color:rgba(0,0,0,0.5)">
+			<iframe width="99.66%" height="600" src="iframehome.html" scrolling="no" allowFullScreen></iframe>
+		</section>
+	</div>
+</template>
+
+
+
+
+
+
+<template name="pagey">
+{{#if isHome}}
+<div>
+<div id="pageyheader">
+	<div id="usernamedisplay" horizontal layout justified>
+	<!--{{# each user}}-->
+		{{user}}
+	<!--	{{botX}}   -->
+	<!--{{/each}}-->
+	
+	{{#if isOwner}}
+		<div id="paperfabs">
+		<paper-fab id="fabsave" mini icon="save"></paper-fab>
+		<paper-fab id="fabsettings" mini style="background-color:green;" icon="settings"></paper-fab>
+		</div>
+	{{/if}}
+	</div>
+	<paper-tabs id="pagetabs" selected="0">
+		<paper-tab id="pt0">WEB</paper-tab>
+		<paper-tab id="pt1">HTML</paper-tab>
+		<paper-tab id="pt2">CSS</paper-tab>
+		<paper-tab id="pt3">JS</paper-tab>
+	</paper-tabs>
+	<div class="clearfix">&nbsp;</div>
+</div>
+
+
+		<div class="wbpg" style="z-index:1;">
+		<section id="output">
+			<iframe width="99.66%" height="600" id="framey" allowFullScreen></iframe>
+		</section></div>
+		<div class="wbpg" style="z-index:0;">
+		{{> CodeMirror id="htmleditor" name="html" options=htmleditorOptions code=code.html}}</div>
+		<div class="wbpg" style="z-index:0;">
+		{{> CodeMirror id="csseditor" name="css" options=csseditorOptions code=code.css}}</div>
+		<div class="wbpg" style="z-index:0;">
+		{{> CodeMirror id="jseditor" name="js" options=jseditorOptions code=code.js}}</div>
+</div>
+{{else}}
+	{{> home}}
+{{/if}}
+</template>
+
+<template name="assets">
+<div horizontal layout around-justified>
+	<div flex>
+		{{#each img}}
+		{{.}}:
+		<img src="/assets/{{.}}.png">
+		<br>
+      	{{/each}}
+	</div>
+</div>
+</template>
+
+
+<template name="yo">
+
+</template>
+
+
+
+
+

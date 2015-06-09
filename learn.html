@@ -1,0 +1,637 @@
+<head>
+<style>
+  h1 {
+  	color:black;
+  	background-color: #44FF1C;
+  	padding: 15px;
+  	border: 3px solid black;
+  }
+  h2 {
+
+  }
+  .centerer{
+  	text-align: center;
+  	padding: 30px;
+  }
+  p {
+  	font-size: 16px;
+  	text-align:left;
+  }
+  .ully {
+  	font-size: 16px;
+  	text-align:left;
+  	line-height: 200%;
+  }
+
+  .boxxy{
+  	width:100px;
+  	height:15px;
+  	background-color: #323434;
+  	border: 2px solid black;
+  	color: #aeaeae;
+  	display: inline-block;
+  	text-align: center;
+  	padding: 10px;
+  	margin-top: 10px;
+  	font-size: 14px;
+  }
+  .tipper{
+  	  border: 1px solid black;
+	  background-color: rgb(255,255,141);
+	  border-radius: 15px;
+	  width:70%;
+	  margin-left:15%;
+  }
+  .tipper p{
+  	padding-left: 18px;
+  	padding-right: 18px;
+  }
+  .tipper-header {
+  	  border-bottom: 1px solid black;
+	  padding: 5px;
+	  background-color: rgba(0,255,0,0.5);
+	  border-top-right-radius: 15px;
+	  border-top-left-radius: 15px;
+  }
+  code { 
+    background: hsl(220, 80%, 90%); 
+  }
+  .hilite {
+  	text-align: left;
+  }
+  .hiliteSel {
+  	width:50px;
+  	height:20px;
+  	background-color: red;
+  	color:white;
+  	padding-top: 4px;
+  	margin-left: 94%;
+  	cursor: pointer;
+  }
+  .hiliteSelProxy {
+  	width:50px;
+  	height:20px;
+  	background-color: red;
+  	color:white;
+  	padding-top: 4px;
+  	display: inline-block;
+  	font-size: 14px;
+  	padding-left:11px;
+  }
+
+
+</style>
+
+</head>
+
+<template name="learn">
+
+<div class="centerer">
+<h1>Make a Game!</h1>
+
+<h2>Part 1: The basics</h2>
+
+<p>
+In this tutorial, you will learn how to code your own online game. We will be using the programming language of the internet: Javascript. Javascript can be used to code anything from websites to apps to games, so it is a great langauge to start learning now! Sign up for a CircuitSpace account, or sign in if you already have one. Click "Home", and you will see your username and some buttons that look like this:
+</p>
+
+<img src="/learn/account.png" width="100%">
+
+<p>
+<ul>
+	<li>
+	The <paper-fab id="fabsave" style="top:13px;" mini icon="save"></paper-fab> button saves your work.
+	</li>
+	<li>
+	The <paper-fab id="fabsettings" mini style="background-color:green;top:15px;" icon="settings"></paper-fab> button lets you change how your account will look on the "Members" page.
+	</li>
+	<li style="margin-top:8px;">
+	The <span class="boxxy">WEB</span> button renders your code, so you can see what you have created!
+	</li>
+	<li>
+	The <span class="boxxy">HTML</span> shows an input area for HTML code (for making a website).
+	</li>
+	<li>
+	The <span class="boxxy">CSS</span> shows an input area for CSS code (for styling your website).
+	</li>
+	<li>
+	The <span class="boxxy">JS</span> show an input area for Javascript code!!! This is where we put our game code.
+	</li>
+</ul>
+</p>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>Open your CircuitSpace homepage in a new browser tab, then you can switch back and forth between this tutorial and your homepage quickly.</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 2: Setting up the game</h2>
+
+<p>
+To make our online game, we will be using an awesome Javascript framework called <a href="http://www.phaser.io">Phaser</a>. Phaser will help us easily make more great interactive features in our game. Our first line of code will start a new Phaser game, set the game's size, and set the name of the functions needed for the game to run. Our game will be 888 x 600 pixels, and our three game functions will be called <strong>preload</strong>, <strong>create</strong>, and <strong>update</strong>. Below this line, we will declare these three functions, so we can fill them with code in the next few steps. Here is the first bit of code:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">game</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Phaser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Game</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">888</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">600</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">Phaser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">AUTO</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span> <span style="color: #a6e22e">preload</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">preload</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">create</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">create</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">update</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">update</span> <span style="color: #f8f8f2">});</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">preload</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">create</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">update</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</div>
+
+<br>
+
+<ul class="ully">
+<li>
+The <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;margin-bottom:-8px;display:inline-block;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span>
+</pre></div>
+ keyword makes a VARIABLE. A variable is like an empty box that can hold any other code, like numbers, words, or entire games! The name we chose for this variable is "game".
+</li>
+<li>
+The <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;margin-bottom:-8px;display:inline-block;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">function</span>
+</pre></div>
+keyword makes a FUNCTION. A function is a block of code that can be used over and over again. After the <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;margin-bottom:-8px;display:inline-block;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">function</span>
+</pre></div> keyword comes the name we choose for the function, and two parentheses ( ). Finally, two curly braces { } are used to contain the function's code. Most of our game code will be inside the curly braces of these three functions.
+</li>
+</ul>
+
+<br>
+
+<p style="line-height:175%">
+Copy the code into the <span class="boxxy" style="line-height:100%">JS</span> section of your homepage. You can click the <span class="hiliteSelProxy" style="line-height:100%">Select</span> button to select the code, and then use Copy and Paste to make it quicker. Or you can write out every word yourself, if you like a challenge! Don't forget to save your work after every step.
+</p>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>Keyboard shortcuts are awesome! On Mac computers, you can use Command-C to copy, and Command-V to paste. On Windows, use Control-C and Control-V.</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 3: The preload function.</h2>
+
+<p>
+The code in the <strong>preload</strong> function is run before the game even starts. Here is where we set up our game's background, and load the images we will use in our game. Notice we are using the word "game", which is the variable we created in our first line of code. Put this code in between the curly braces { } of your <strong>preload</strong> function:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">stage</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">backgroundColor</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;#85b5e1&#39;</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/platform.png&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;star&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/star.png&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;player&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/dude.png&#39;</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+</div>
+
+<br>
+
+<ul class="ully">
+<li>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;margin-bottom:-8px;display:inline-block;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #e6db74">&#39;strings&#39;</span>
+</pre></div> are words in javascript. They are used for text, or to specify options like colors or file names. Strings are ALWAYS surrounded by quotes, either double " " or single ' '.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;background: #272822; overflow:auto;display:inline-block;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">stage</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">backgroundColor</span>
+</pre></div> is where we set the background color for our game. You can use colors like "red", "blue", "green", or "magenta". Or you can make your own color with a HEX color code, like I did in this example. You can make your own HEX color code at <a href="http://www.hexcolortool.com/">hexcolortool.com</a>
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;width:auto;background: #272822; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span>
+</pre></div> is where we load our game images. The first string in the parentheses is the name we choose for our image. The second string (after the comma) is the pathway the the image file. I have chosen three images to load for my game. You can find more images at <a href="http://www.circuit.space/assets">circuit.space/assets</a>
+</li>
+</ul>
+
+<br>
+
+<p>
+Remember to put your code IN BETWEEN the curly braces { } of your <strong>preload</strong> function. The final <strong>preload</strong> function should look something like this:
+</p>
+
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">function</span> <span style="color: #a6e22e">preload</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">stage</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">backgroundColor</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;#85b5e1&#39;</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/platform.png&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;star&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/star.png&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;player&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/dude.png&#39;</span><span style="color: #f8f8f2">);</span>
+
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</div>
+
+<br><br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>Real coders always organize their code. It is common practice to put some empty space in front of the lines of code inside of a function, so you can see where functions begin and end.</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 4: Global variables.</h2>
+
+<p>
+Variables are the most important part of javascript. Variables can either be SCOPED or GLOBAL. When you create a variable inside of a function, it is SCOPED to that function. That means that other functions cannot use that variable. But when you create a variable outside of any function, that variable is GLOBAL. Global variables can be used at any time by any part of your code. We need a few global variables in our code:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">cursors</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">jumpButton</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">;</span>
+</pre></div>
+</div>
+
+<br>
+
+<p>
+Put this code in after the <strong>preload</strong> function, but before the <strong>create</strong> function. They do NOT go inside any curly braces { }. These five variables will be used inside all three of our main functions, so they need to be global. The semilcolon ; is how we end a line of code in javascript.
+</p>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>It might seem weird to make a variable, but not set it equal to anything at all. We are just doing this to keep our variables global. When we make these variables equal something inside one of our functions, we will not need to use the var keyword, because they have already been created.</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 5: Create our player.</h2>
+
+<p>
+Now we will start working on the <strong>create</strong> function, which will create our game objects for us. First we will create our player, and add some code to listen for the computer keyboard, so we can control our player. Add this code inside the curly braces { } of the <strong>create</strong> function:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">player</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">sprite</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">200</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;player&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">enable</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">);</span>
+
+<span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collideWorldBounds</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+<span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gravity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">500</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #a6e22e">cursors</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">input</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">keyboard</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">createCursorKeys</span><span style="color: #f8f8f2">();</span>
+<span style="color: #a6e22e">jumpButton</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">input</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">keyboard</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addKey</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">Phaser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Keyboard</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">SPACEBAR</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+</div>
+
+<br>
+
+<ul class="ully">
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">sprite</span>
+</pre></div> is how we add our character as a sprite, which we can then control with our keyboard. The numbers are the horizontal (x) and vertical (y) starting position of our sprite (in pixels). The string 'player' refers to the image that we loaded in our <strong>preload</strong> function.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">enable</span>
+</pre></div> gives our player some physical properties, like weight, that is affected by gravity.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collideWorldBounds</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+</pre></div> makes it so our player cannot go beyond the edges of our screen.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gravity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span>
+</pre></div> sets how strongly our virtual gravity will affect our player.
+</li>
+<li>
+The last two lines of code use Phaser to pay attention to the spacebar and arrow keys on the keyboard, which we will use to move our player.
+</li>
+</ul>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>x and y are very important letters. x always corresonds to the horizontal (side-to-side) direction, and y always corresponds to the vertical (up-and-down) direction. That's why we set our gravity on the y direction, because gravity always pulls DOWN.</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 6: Make our player move!</h2>
+
+<p>
+The following code will move the character right and left when you press the arrow keys, and jump when you press the spacebar. Add this code inside the curly braces { } of the <strong>update</strong> function. The <strong>update</strong> keeps looping, over and over again, for as long as the game continues.
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cursors</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">left</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">250</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+<span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cursors</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">right</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">250</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">jumpButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">onFloor</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">||</span> <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">touching</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">down</span><span style="color: #f8f8f2">))</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">400</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</div>
+
+<br>
+
+<ul class="ully">
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">condition</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span><span style="color: #a6e22e">code</span><span style="color: #f8f8f2">}</span>
+</pre></div> is an essential part of javascript. "If" checks whether or not the condition in the paranthesies is true. If the condition is true, then the code inside the curly braces is executed.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">condition</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span><span style="color: #a6e22e">code</span><span style="color: #f8f8f2">}</span>
+</pre></div>, when placed after an "if" statement, will only be executed if the "if" statement is false. This way, our computer does not have to check for both the right and left arrows at the same time.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">&amp;&amp;</span>
+</pre></div> means "and" in javascript, while <!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">||</span>
+</pre></div> means "or".
+</li>
+<li><!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">jumpButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">onFloor</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">||</span> <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">touching</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">down</span>
+</pre></div> checks if the jump button (spacebar) is being pressed, AND if our character is standing on the ground (either on the bottom of the screen OR on a platform). We have to check for both things, because our character should not be able to jump off of thin air!
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span>
+</pre></div> controls how fast our character moves. We set it 0 at the beginning, so that our character will stop moving when we stop pressing right, left, or spacebar.
+</li>
+</ul>
+
+<br>
+
+<p style="line-height:175%">
+Click the <span class="boxxy" style="line-height:100%">WEB</span> button on your homepage, and your game will start. You should be able to move your character left and right, and jump with the spacebar.
+</p>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>
+Organizing code is very important. Most coders open the curly braces of an "if" statement right after the parentheses. Then the code to be executed is put on a seperate line. The closing curly brace } lives on it own line, which makes it easier to see where statements begin and end.
+</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 7: Add platforms!</h2>
+
+<p>
+Now we will add some platforms to make our game more interesting. Add this code inside the curly braces { } of the <strong>create</strong> function:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">platforms</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physicsGroup</span><span style="color: #f8f8f2">();</span>
+
+<span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">500</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">150</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">200</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">300</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">400</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">450</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+
+<span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">setAll</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;body.immovable&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+</div>
+
+<br>
+
+<ul class="ully">
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physicsGroup</span><span style="color: #f8f8f2">()</span>
+</pre></div> adds a group of objects to the game, which all have the same physical properties.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">500</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">150</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+</pre></div> adds an object to the group called "platforms". The numbers in the parentheses are the x and y values of the platform's starting position. The string 'platform' refers to the image that we loaded in our <strong>preload</strong> function.
+</li>
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">setAll</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;body.immovable&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">);</span>
+</pre></div> makes it so the platforms stay still.
+</li>
+</ul>
+
+<br>
+
+<p>
+Also add these two lines of code near the top of the <strong>update</strong> function, just before player.body.velocity.x=0; This code makes it so our platforms can support the weight of our character and the stars.
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collide</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">);</span>
+<span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collide</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+</div>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>
+You can choose your own locations to put the platforms. The position 0,0 is in the upper-left hand corner of the screen. The values of x and y count the number of pixels away from that corner.
+</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 8: Add stars!</h2>
+
+<p>
+Now we will add some stars, which our character will need to collect to win the game. Add this code to the <strong>create</strong> function:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">stars</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">group</span><span style="color: #f8f8f2">();</span>
+<span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">enableBody</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">12</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">i</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">star</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">i</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">70</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;star&#39;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gravity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">300</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collideWorldBounds</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">bounce</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.7</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">Math.</span><span style="color: #a6e22e">random</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</div>
+
+<ul class="ully">
+<li>
+<!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">12</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">i</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span><span style="color: #a6e22e">code</span><span style="color: #f8f8f2">}</span>
+</pre></div> is another very important part of javascript. This statement is called a "for loop". It executes the code in the curly braces several times, each time with a different value for the variable i. There are three parameters inside the parentheses:</li>
+  <ul class="ully">
+  <li><!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+</pre></div> initiates a variable with the name "i" and the value 0.
+  </li>
+  <li>
+    <!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">i</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">12</span><span style="color: #f8f8f2">;</span>
+</pre></div> sets a limit to the value of "i". i must never exceed 12.
+  </li>
+  <li>
+  <!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">i</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">;</span>
+</pre></div> specifies that i will change by 1 each time around the for loop. Since i starts at 0, but never exceeds 12, our for loop will run exactly 12 times.
+  </li>
+</ul>
+  <li>
+    <!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">star</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">i</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">70</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;star&#39;</span><span style="color: #f8f8f2">);</span>
+</pre></div> creates a star each time the for loop executes, which means that 12 stars are created. Each star is created in a different place, because the x position of the star is equal to i*70. Since i changes by 1 each time around the for loop, the stars will start exactly 70 pixels away from each other.
+  </li>
+  <li>
+    <!-- HTML generated using hilite.me --><div style="margin-bottom:-8px;display:inline-block;background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">bounce</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.7</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">Math.</span><span style="color: #a6e22e">random</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">;</span>
+</pre></div> gives each star a random "bounciness" value. When the stars first land on the ground or on a platform, they will all bounce different amounts.
+  </li>
+  </ul>
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>
+Try changing the numbers 12 and 70 in the code above, then click the "WEB" button to see how your changes affected the stars. Don't forget to save your work!
+</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 9: Collect stars!</h2>
+
+<p>
+The last thing we need to add is the ability for our character to collect the stars. First add this line of code to the bottom of your <strong>update</strong> function, below all the "if" statements, but still within the curly braces.
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">overlap</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">collectStar</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">null</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">);</span>
+</pre></div>
+</div>
+
+<br>
+
+<p>
+This code specified a function to be performed whenever our character overlaps with a star. The function we specified is called collectStar. Now we have to create that function. Add this code below ALL the other code, outside of ANY curly braces:
+</p>
+
+<div class="hiliteSel">Select</div>
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">function</span> <span style="color: #a6e22e">collectStar</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">kill</span><span style="color: #f8f8f2">();</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</div>
+
+<br>
+
+<p>
+
+</p>
+<p style="line-height:175%">
+We have created a new function that destroys a star when that star is collected by our character, by executing star.kill(). Now click the <span class="boxxy" style="line-height:100%">WEB</span> button and play your awesome online game!
+</p>
+
+
+<br>
+
+<div class="tipper">
+<div class="tipper-header">tip:</div>
+<p>
+Save your code!
+</p>
+</div>
+
+<br><br><br>
+
+<h2>Part 10: Review</h2>
+
+<p>
+I hope you have learned a lot in this online tutorial. If you want to know more about making games with javascript, check out the <a href="https://phaser.io/learn">learning section</a> of the Phaser website. Below is the final game code, so you can check your work:
+</p>
+
+<div class="hilite">
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">game</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Phaser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Game</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">888</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">600</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">Phaser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">AUTO</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">{</span> <span style="color: #a6e22e">preload</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">preload</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">create</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">create</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">update</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">update</span> <span style="color: #f8f8f2">});</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">preload</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">stage</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">backgroundColor</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;#85b5e1&#39;</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/platform.png&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;star&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/star.png&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">load</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">image</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;player&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;assets/dude.png&#39;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">cursors</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">jumpButton</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">create</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #a6e22e">player</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">sprite</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">100</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">200</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;player&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">enable</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collideWorldBounds</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gravity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">500</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #a6e22e">cursors</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">input</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">keyboard</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">createCursorKeys</span><span style="color: #f8f8f2">();</span>
+  <span style="color: #a6e22e">jumpButton</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">input</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">keyboard</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">addKey</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">Phaser</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Keyboard</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">SPACEBAR</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #a6e22e">platforms</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physicsGroup</span><span style="color: #f8f8f2">();</span>
+
+  <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">500</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">150</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">200</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">300</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">400</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">450</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;platform&#39;</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">setAll</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;body.immovable&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #a6e22e">stars</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">add</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">group</span><span style="color: #f8f8f2">();</span>
+  <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">enableBody</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">i</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">12</span><span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">i</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">var</span> <span style="color: #a6e22e">star</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">create</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">i</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">70</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;star&#39;</span><span style="color: #f8f8f2">);</span>
+      <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">gravity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">300</span><span style="color: #f8f8f2">;</span>
+      <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collideWorldBounds</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">true</span><span style="color: #f8f8f2">;</span>
+      <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">bounce</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.7</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">Math.</span><span style="color: #a6e22e">random</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">0.2</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">update</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collide</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">collide</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">platforms</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cursors</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">left</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">250</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">}</span>
+  <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">cursors</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">right</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">250</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">}</span>
+  <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">jumpButton</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">isDown</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">onFloor</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">||</span> <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">touching</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">down</span><span style="color: #f8f8f2">))</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #a6e22e">player</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">body</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">velocity</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">y</span> <span style="color: #f92672">=</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">400</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #f8f8f2">}</span>
+  <span style="color: #a6e22e">game</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">physics</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">arcade</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">overlap</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">stars</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">collectStar</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">null</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">collectStar</span> <span style="color: #f8f8f2">(</span><span style="color: #a6e22e">player</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">star</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">kill</span><span style="color: #f8f8f2">();</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</div>
+
+</div>
+</template>

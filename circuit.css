@@ -1,0 +1,251 @@
+/* CSS declarations go here */
+
+  html,body {
+    height: 822px;
+    margin: 0;
+    background-color: #E5E5E5;
+    font-family: 'RobotoDraft', sans-serif;
+  }
+
+body {
+  background-color: #315481;
+  background-image: linear-gradient(to bottom, #315481, #af8d6f 100%); /*#918e82*/
+  background-size: cover;
+  background-attachment: scroll;
+
+  /*position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+}
+
+.container {
+  max-width: 888px;
+  margin: 0 auto;
+  min-height: 100%;
+  background: white;
+}
+
+.padder {
+  padding: 15px;
+}
+
+#message {
+  width: 200px;
+}
+
+header {
+  background: black;
+  padding: 0px 0px 0px 0px;
+  position: relative;
+  
+
+}
+
+#login-buttons {
+  display: block;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+form {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  position: relative;
+}
+
+#ulholder ul {
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+
+#ulholder li {
+  position: relative;
+  list-style: none;
+  padding: 9px;
+  border-bottom: #bbb solid 1px;
+  width:98%;
+  height: 42px;
+}
+
+#member-icon {
+	position: absolute;
+	top: 8px;
+  left: 15px;
+}
+
+#ulholder li:hover {
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+}
+
+#ulholder ul a {
+  text-decoration: none;
+  color: black;
+}
+
+#ulholder li .text {
+  margin-left: 20px;
+}
+
+#ulholder li.checked {
+  color: #888;
+}
+
+#ulholder li.checked .text {
+  text-decoration: line-through;
+}
+
+#ulholder li.private {
+  background: #eee;
+  border-color: #ddd;
+}
+
+header .hide-completed {
+  float: right;
+}
+
+.toggle-private {
+  margin-left: 5px;
+}
+
+@media (max-width: 600px) {
+  li {
+    padding: 12px 15px;
+  }
+
+  .search {
+    width: 150px;
+    clear: both;
+  }
+}/* CSS declarations go here */
+.tab{
+
+}
+paper-tabs#tabs paper-tab#nav1::shadow #ink {
+  color: #00ff00;
+}
+paper-tabs#tabs paper-tab#nav2::shadow #ink {
+  color: #ff00ff;
+}
+#tabs {
+	width: 60%;
+	float: right;
+	background-color: rgba(25,25,25,0.2);
+  position:absolute;
+  bottom:0;
+  right:0;
+  clear:right;
+  height: 80%;
+  border: 1px solid black;
+  margin-right: 2%;
+  background: #03a9f4;
+  color: white;
+  text-transform: uppercase;
+}
+#pagetabs{
+  width: 60%;
+  float: right;
+  margin-right: 2%;
+  margin-top:2%;
+  right:0;
+  bottom:0;
+  border: 1px solid black;
+  height: 40px;
+    background: rgba(25,25,25,0.8);
+    color: white;
+}
+#usernamedisplay{
+	width: 34%;
+  float: left;
+  left:0;
+  bottom:0;
+  border: 0px solid black;
+  height: 40px;
+    background: rgba(25,25,25,0.0);
+    color: white;
+    font-size: 3.5em;
+    text-shadow: 2px 2px 2px #000000;
+    padding-left:2%;
+}
+paper-tab{
+  border: 1px solid black;
+}
+paper-tabs#tabs::shadow #selectionBar {
+  height: 16px;
+}
+#login {
+	float: left;
+	width: 30%;
+  height: 120px;
+  padding: 2%;
+  margin: 0 12px 0 12px;
+  margin-right: 0;
+  color: white;
+  background-color: black;
+  background-image: url("/img/cs.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center bottom;
+}
+#login-buttons{
+  position:absolute;
+  bottom:13%;
+  left: 5%;
+}
+.clearfix {
+  clear: both;
+  font-size: 1px;
+  height:0px;
+}
+
+
+@media (max-width: 500px) {
+  #login-buttons{
+  bottom:6%;
+  left: 3%;
+}
+}
+
+
+
+.CodeMirror {
+  height:600px;
+}
+.wbpg {
+  width: 100%;
+  position: absolute;
+   max-width: 888px;
+  margin: 0 auto;
+  min-height: 600px;
+}
+#pageyheader{
+	background-color: grey;
+	background-image: linear-gradient(to bottom, #d0edf5, grey 100%);
+}
+#output{
+	background-color: white;
+}
+#paperfabs{
+	margin-top: 3%;
+}

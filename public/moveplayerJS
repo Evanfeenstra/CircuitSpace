@@ -1,0 +1,142 @@
+
+<div id="container">
+<div id='hi'>!!!!!!!!!</div>
+  <div id="hi2">hi</div>
+  <div id="hi3">hi3</div>
+</div>
+
+<div id="player" style="height:10px;width:10px;background-color:black;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+html{
+  height: 100%;
+  padding: 0;
+}
+body {
+  min-height: 100%;
+  padding: 0;
+}
+
+
+
+#container{
+  height:400px;
+ display:flex;
+  flex-direction: row;
+ align-items:center;
+}
+
+
+
+#hi{
+color:white;
+font-size:4vw;
+  order: 1;
+  flex: 1;
+  background-color:red;
+}
+
+
+#hi2{
+  order: 2;
+  flex: 1;
+  background-color: green;
+}
+
+#hi3{
+ order: 3;
+  flex:1;
+  background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+var angle=0; 
+foo = document.getElementById('hi');
+foo2 = document.getElementById('hi2');
+foo3 = document.getElementById('hi3');
+function Spin() { 
+ foo.style.webkitTransform = 'rotate('+angle+'deg)';
+  foo2.style.webkitTransform = 'translate('+Math.cos(angle/36)*20+'px,'+Math.sin(angle/36)*20+'px)';
+ foo3.style.webkitTransform = 'rotate('+(angle*-1)+'deg)';
+ angle=angle+1;
+};
+
+
+
+
+var theMan = document.getElementById('player');
+theMan.style.position = "absolute";
+xLeft = 1;
+yTop=1;
+function moveGuy() {
+  theMan.style.webkitTransform = 'translate('+xLeft+'px,'+yTop+'px)';
+}
+
+
+
+
+var keyState = {};    
+window.addEventListener('keydown',function(e){
+  e.preventDefault();
+    keyState[e.keyCode || e.which] = true;
+},true);    
+window.addEventListener('keyup',function(e){
+    keyState[e.keyCode || e.which] = false;
+},true);
+
+function gameLoop() {
+    if (keyState[37]){
+      if(xLeft>0) {
+        xLeft -= 2;
+      	moveGuy();
+      }
+      else{xLeft=xLeft+5;}
+    }    
+    if (keyState[39]){
+      if(xLeft<888) {
+        xLeft += 2;
+      	moveGuy();
+      }
+      else{xLeft=xLeft-5;}
+    }
+  	if (keyState[38]){
+      if(yTop>-300) {
+        yTop -= 2;
+      	moveGuy();
+      }
+      else{yTop=yTop+5;}
+    }    
+    if (keyState[40]){
+      if(yTop<888) {
+        yTop += 2;
+      	moveGuy();
+      }
+      else{yTop=tYop-5;}
+    }
+
+  	//Spin();
+    // redraw/reposition your object here
+    // also redraw/animate any objects not controlled by the user
+
+    setTimeout(gameLoop, 20);
+}    
+gameLoop();
